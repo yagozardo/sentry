@@ -42,20 +42,30 @@ class GitLabApiClient(ApiClient, OAuth2RefreshMixin):
         return self.installation.model.metadata
 
     def request(self, method, path, data=None, params=None, api_preview=False):
-        # TODO(lb): Refresh auth
-        # self.check_auth(redirect_url=self.oauth_redirect_url)
         access_token = self.identity.data['access_token']
         headers = {
             'Authorization': u'Bearer {}'.format(access_token)
         }
-        return self._request(
-            method,
-            GitLabApiClientPath.build_api_url(
-                self.metadata['base_url'],
-                path
-            ),
-            headers=headers, data=data, params=params
+        url = GitLabApiClientPath.build_api_url(
+            self.metadata['base_url'],
+            path
         )
+        try:
+            return self._request(
+                method,
+                url,
+                headers=headers, data=data, params=params
+            )
+        except Exception:  # ApiUnauthorized:
+            self.update_auth()
+            return self._request(
+                method,
+                url,
+                headers=headers, data=data, params=params
+            )
+
+    def update_auth(self):
+        pass
 
     def get_user(self):
         return self.get(GitLabApiClientPath.user)
