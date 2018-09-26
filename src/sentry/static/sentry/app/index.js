@@ -1,4 +1,5 @@
 /* global module */
+import 'babel-polyfill'; // XXX(webpack4): because this was defined in vendor bundle previously
 import {AppContainer} from 'react-hot-loader';
 import {renderToStaticMarkup} from 'react-dom/server';
 import * as Emotion from 'emotion';
@@ -19,11 +20,11 @@ import moment from 'moment';
 
 import 'app/utils/emotion-setup';
 
-import Main from 'app/main';
+import * as il8n from 'app/locale'; // XXX(webpack4): Currently all locales get bundled, would be good to have this async?
 import * as api from 'app/api';
 import ajaxCsrfSetup from 'app/utils/ajaxCsrfSetup';
-import * as il8n from 'app/locale';
 import plugins from 'app/plugins';
+import Main from 'app/main';
 
 // setup jquery for CSRF tokens
 jQuery.ajaxSetup({
@@ -50,6 +51,10 @@ if (module.hot) {
     render(Main);
   });
 }
+
+// XXX(webpack4): this used to be done in layout.html
+window.Raven = Raven;
+window.$ = jQuery;
 
 export default {
   jQuery,
