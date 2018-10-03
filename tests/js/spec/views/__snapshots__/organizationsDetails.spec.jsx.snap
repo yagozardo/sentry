@@ -271,11 +271,11 @@ exports[`OrganizationDetails render() deletion in progress should render a delet
           </div>
         </a>
         <div
-          class="css-64be24-OrganizationStatsChartWrapper e15rip1h0"
+          class="css-1pa8xaz-OrganizationStatsChartWrapper e15rip1h0"
         >
           Last 24h
           <figure
-            class="e15rip1h1 barchart css-17kok3h-StyledFigure-StyledBarChart e5t71581"
+            class="sparkline barchart css-na17se-StyledFigure e5t71581"
             style="height:60px"
           >
             <span
@@ -741,11 +741,11 @@ exports[`OrganizationDetails render() pending deletion should render a restorati
           </div>
         </a>
         <div
-          class="css-64be24-OrganizationStatsChartWrapper e15rip1h0"
+          class="css-1pa8xaz-OrganizationStatsChartWrapper e15rip1h0"
         >
           Last 24h
           <figure
-            class="e15rip1h1 barchart css-17kok3h-StyledFigure-StyledBarChart e5t71581"
+            class="sparkline barchart css-na17se-StyledFigure e5t71581"
             style="height:60px"
           >
             <span
@@ -1238,11 +1238,11 @@ exports[`OrganizationDetails render() pending deletion should render a restorati
           </div>
         </a>
         <div
-          class="css-64be24-OrganizationStatsChartWrapper e15rip1h0"
+          class="css-1pa8xaz-OrganizationStatsChartWrapper e15rip1h0"
         >
           Last 24h
           <figure
-            class="e15rip1h1 barchart css-17kok3h-StyledFigure-StyledBarChart e5t71581"
+            class="sparkline barchart css-na17se-StyledFigure e5t71581"
             style="height:60px"
           >
             <span
