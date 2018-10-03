@@ -95,6 +95,9 @@ exports[`Project Ownership Input renders 1`] = `
       >
         <BuilderSelect
           clearable={false}
+          disabled={false}
+          hideErrorMessage={false}
+          multiple={false}
           name="select-type"
           onChange={[Function]}
           options={
@@ -109,6 +112,7 @@ exports[`Project Ownership Input renders 1`] = `
               },
             ]
           }
+          required={false}
           showSearch={false}
           style={
             Object {
@@ -160,6 +164,7 @@ exports[`Project Ownership Input renders 1`] = `
                 <StyledSelectControl
                   clearable={false}
                   disabled={false}
+                  height={36}
                   id="id-select-type"
                   multiple={false}
                   name="select-type"
@@ -339,7 +344,7 @@ exports[`Project Ownership Input renders 1`] = `
                               onTouchMove={[Function]}
                               onTouchStart={[Function]}
                             >
-                              <span
+                              <div
                                 className="Select-multi-value-wrapper"
                                 id="react-select-2--value"
                               >
@@ -427,7 +432,7 @@ exports[`Project Ownership Input renders 1`] = `
                                     />
                                   </div>
                                 </AutosizeInput>
-                              </span>
+                              </div>
                               <span
                                 className="Select-arrow-zone"
                                 onMouseDown={[Function]}
@@ -708,7 +713,7 @@ exports[`Project Ownership Input renders 1`] = `
                                 onTouchMove={[Function]}
                                 onTouchStart={[Function]}
                               >
-                                <span
+                                <div
                                   className="Select-multi-value-wrapper"
                                   id="react-select-3--value"
                                 >
@@ -773,7 +778,7 @@ exports[`Project Ownership Input renders 1`] = `
                                       />
                                     </div>
                                   </AutosizeInput>
-                                </span>
+                                </div>
                                 <span
                                   aria-hidden="true"
                                   className="Select-loading-zone"
@@ -924,6 +929,7 @@ exports[`Project Ownership Input renders 1`] = `
     }
   >
     <StyledTextArea
+      async={false}
       autoCapitalize="off"
       autoComplete="off"
       autoCorrect="off"
@@ -931,6 +937,7 @@ exports[`Project Ownership Input renders 1`] = `
       placeholder="#example usage
 path:src/example/pipeline/* person@sentry.io #infra
 url:http://example.com/settings/* #product"
+      rows={1}
       spellCheck="false"
       value="new"
     >

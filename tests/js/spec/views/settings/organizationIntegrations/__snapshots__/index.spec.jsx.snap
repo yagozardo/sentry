@@ -1399,6 +1399,7 @@ exports[`OrganizationIntegrations render() with installed integrations Displays 
                                       >
                                         <StyledButton
                                           borderless={true}
+                                          disabled={false}
                                           icon="icon-trash"
                                           onClick={[Function]}
                                         >
@@ -2725,6 +2726,7 @@ exports[`OrganizationIntegrations render() with installed integrations Displays 
                                       >
                                         <StyledButton
                                           borderless={true}
+                                          disabled={false}
                                           icon="icon-trash"
                                           onClick={[Function]}
                                         >

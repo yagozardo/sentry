@@ -891,6 +891,7 @@ exports[`OnboardingWizard render() should render and respond to click events 1`]
                         <StyledSelectControl
                           clearable={false}
                           disabled={false}
+                          height={36}
                           id="id-select-team"
                           multiple={false}
                           name="select-team"
@@ -1008,7 +1009,7 @@ exports[`OnboardingWizard render() should render and respond to click events 1`]
                                       onTouchMove={[Function]}
                                       onTouchStart={[Function]}
                                     >
-                                      <span
+                                      <div
                                         className="Select-multi-value-wrapper"
                                         id="react-select-2--value"
                                       >
@@ -1075,7 +1076,7 @@ exports[`OnboardingWizard render() should render and respond to click events 1`]
                                             />
                                           </div>
                                         </AutosizeInput>
-                                      </span>
+                                      </div>
                                       <span
                                         className="Select-arrow-zone"
                                         onMouseDown={[Function]}
@@ -2013,6 +2014,7 @@ exports[`OnboardingWizard render() should render and respond to click events 2`]
                         <StyledSelectControl
                           clearable={false}
                           disabled={false}
+                          height={36}
                           id="id-select-team"
                           multiple={false}
                           name="select-team"
@@ -2130,7 +2132,7 @@ exports[`OnboardingWizard render() should render and respond to click events 2`]
                                       onTouchMove={[Function]}
                                       onTouchStart={[Function]}
                                     >
-                                      <span
+                                      <div
                                         className="Select-multi-value-wrapper"
                                         id="react-select-2--value"
                                       >
@@ -2197,7 +2199,7 @@ exports[`OnboardingWizard render() should render and respond to click events 2`]
                                             />
                                           </div>
                                         </AutosizeInput>
-                                      </span>
+                                      </div>
                                       <span
                                         className="Select-arrow-zone"
                                         onMouseDown={[Function]}

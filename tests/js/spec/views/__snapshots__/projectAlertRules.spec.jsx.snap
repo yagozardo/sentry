@@ -352,6 +352,8 @@ exports[`projectAlertRules renders 1`] = `
                           is={null}
                         >
                           <TextColorLink
+                            onlyActiveOnIndex={false}
+                            style={Object {}}
                             to="1/"
                           >
                             <Link

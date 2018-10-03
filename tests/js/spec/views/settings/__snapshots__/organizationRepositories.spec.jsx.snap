@@ -48,7 +48,9 @@ exports[`OrganizationRepositories renders with a repository 1`] = `
     >
       <Box>
         <RepoRow
+          center={true}
           key="4"
+          responsive={false}
         >
           <Box
             flex="1"

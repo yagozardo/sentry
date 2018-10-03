@@ -147,13 +147,15 @@ exports[`ProjectDebugSymbols renders 1`] = `
                     <HoverablePanelItem
                       className="hoverable"
                       onClick={[Function]}
+                      p={2}
                     >
                       <Base
-                        className="hoverable css-oncsnl-PanelItem-HoverablePanelItem emphg7t2"
+                        className="hoverable css-9xcqce-PanelItem-HoverablePanelItem emphg7t2"
                         onClick={[Function]}
+                        p={2}
                       >
                         <div
-                          className="hoverable css-oncsnl-PanelItem-HoverablePanelItem emphg7t2"
+                          className="hoverable css-9xcqce-PanelItem-HoverablePanelItem emphg7t2"
                           is={null}
                           onClick={[Function]}
                         >

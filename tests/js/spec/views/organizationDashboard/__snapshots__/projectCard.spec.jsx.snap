@@ -224,6 +224,7 @@ exports[`ProjectCard renders 1`] = `
                                 >
                                   <StyledAvatar
                                     className="css-0"
+                                    hasTooltip={false}
                                     project={
                                       Object {
                                         "hasAccess": true,

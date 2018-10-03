@@ -452,6 +452,7 @@ exports[`ProjectEnvironments render active renders environment list and sets sta
                       </Flex>
                       <div>
                         <EnvironmentButton
+                          disabled={false}
                           onClick={[Function]}
                           size="xsmall"
                         >
@@ -560,6 +561,7 @@ exports[`ProjectEnvironments render active renders environment list and sets sta
                       </Flex>
                       <div>
                         <EnvironmentButton
+                          disabled={false}
                           onClick={[Function]}
                           size="xsmall"
                         >
@@ -613,6 +615,7 @@ exports[`ProjectEnvironments render active renders environment list and sets sta
                           </Button>
                         </EnvironmentButton>
                         <EnvironmentButton
+                          disabled={false}
                           onClick={[Function]}
                           size="xsmall"
                         >
@@ -753,6 +756,7 @@ exports[`ProjectEnvironments render active renders environment list and sets sta
                       </Flex>
                       <div>
                         <EnvironmentButton
+                          disabled={false}
                           onClick={[Function]}
                           size="xsmall"
                         >
@@ -1276,6 +1280,7 @@ exports[`ProjectEnvironments render hidden renders environment list 1`] = `
                       </Flex>
                       <div>
                         <EnvironmentButton
+                          disabled={false}
                           onClick={[Function]}
                           size="xsmall"
                         >

@@ -231,12 +231,14 @@ exports[`OrganizationTeamProjects Should render 1`] = `
           >
             <StyledPanelItem
               key="2"
+              p={2}
             >
               <Base
-                className="css-15fe8h6-PanelItem-StyledPanelItem eqsa6vb1"
+                className="css-1usthj3-PanelItem-StyledPanelItem eqsa6vb1"
+                p={2}
               >
                 <div
-                  className="css-15fe8h6-PanelItem-StyledPanelItem eqsa6vb1"
+                  className="css-1usthj3-PanelItem-StyledPanelItem eqsa6vb1"
                   is={null}
                 >
                   <ProjectItem

@@ -843,6 +843,7 @@ exports[`CreateProject should deal with incorrect platform name if its provided 
                     <StyledSelectControl
                       clearable={false}
                       disabled={false}
+                      height={36}
                       id="id-select-team"
                       multiple={false}
                       name="select-team"
@@ -1002,7 +1003,7 @@ exports[`CreateProject should deal with incorrect platform name if its provided 
                                   onTouchMove={[Function]}
                                   onTouchStart={[Function]}
                                 >
-                                  <span
+                                  <div
                                     className="Select-multi-value-wrapper"
                                     id="react-select-4--value"
                                   >
@@ -1090,7 +1091,7 @@ exports[`CreateProject should deal with incorrect platform name if its provided 
                                         />
                                       </div>
                                     </AutosizeInput>
-                                  </span>
+                                  </div>
                                   <span
                                     className="Select-arrow-zone"
                                     onMouseDown={[Function]}
@@ -1555,6 +1556,7 @@ exports[`CreateProject should fill in platform name if its provided by url 1`] =
                     <StyledSelectControl
                       clearable={false}
                       disabled={false}
+                      height={36}
                       id="id-select-team"
                       multiple={false}
                       name="select-team"
@@ -1714,7 +1716,7 @@ exports[`CreateProject should fill in platform name if its provided by url 1`] =
                                   onTouchMove={[Function]}
                                   onTouchStart={[Function]}
                                 >
-                                  <span
+                                  <div
                                     className="Select-multi-value-wrapper"
                                     id="react-select-3--value"
                                   >
@@ -1802,7 +1804,7 @@ exports[`CreateProject should fill in platform name if its provided by url 1`] =
                                         />
                                       </div>
                                     </AutosizeInput>
-                                  </span>
+                                  </div>
                                   <span
                                     className="Select-arrow-zone"
                                     onMouseDown={[Function]}
@@ -2657,6 +2659,7 @@ exports[`CreateProject should fill in project name if its empty when platform is
                     <StyledSelectControl
                       clearable={false}
                       disabled={false}
+                      height={36}
                       id="id-select-team"
                       multiple={false}
                       name="select-team"
@@ -2816,7 +2819,7 @@ exports[`CreateProject should fill in project name if its empty when platform is
                                   onTouchMove={[Function]}
                                   onTouchStart={[Function]}
                                 >
-                                  <span
+                                  <div
                                     className="Select-multi-value-wrapper"
                                     id="react-select-2--value"
                                   >
@@ -2904,7 +2907,7 @@ exports[`CreateProject should fill in project name if its empty when platform is
                                         />
                                       </div>
                                     </AutosizeInput>
-                                  </span>
+                                  </div>
                                   <span
                                     className="Select-arrow-zone"
                                     onMouseDown={[Function]}

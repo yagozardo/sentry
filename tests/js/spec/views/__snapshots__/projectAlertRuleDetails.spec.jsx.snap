@@ -334,6 +334,7 @@ exports[`ProjectAlertRuleDetails Edit alert rule renders 1`] = `
                                 }
                                 clearable={false}
                                 disabled={false}
+                                height={36}
                                 id="id-actionMatch"
                                 multiple={false}
                                 name="actionMatch"
@@ -510,7 +511,7 @@ exports[`ProjectAlertRuleDetails Edit alert rule renders 1`] = `
                                             onTouchMove={[Function]}
                                             onTouchStart={[Function]}
                                           >
-                                            <span
+                                            <div
                                               className="Select-multi-value-wrapper"
                                               id="react-select-22--value"
                                             >
@@ -577,7 +578,7 @@ exports[`ProjectAlertRuleDetails Edit alert rule renders 1`] = `
                                                   />
                                                 </div>
                                               </AutosizeInput>
-                                            </span>
+                                            </div>
                                             <span
                                               className="Select-arrow-zone"
                                               onMouseDown={[Function]}
@@ -913,7 +914,7 @@ exports[`ProjectAlertRuleDetails Edit alert rule renders 1`] = `
                                         }
                                       }
                                     >
-                                      <span
+                                      <div
                                         className="Select-multi-value-wrapper"
                                         id="react-select-23--value"
                                       >
@@ -978,7 +979,7 @@ exports[`ProjectAlertRuleDetails Edit alert rule renders 1`] = `
                                             />
                                           </div>
                                         </AutosizeInput>
-                                      </span>
+                                      </div>
                                       <span
                                         className="Select-arrow-zone"
                                         onMouseDown={[Function]}
@@ -1067,6 +1068,7 @@ exports[`ProjectAlertRuleDetails Edit alert rule renders 1`] = `
                             }
                             clearable={false}
                             disabled={false}
+                            height={36}
                             id="id-environment"
                             multiple={false}
                             name="environment"
@@ -1250,7 +1252,7 @@ exports[`ProjectAlertRuleDetails Edit alert rule renders 1`] = `
                                         onTouchMove={[Function]}
                                         onTouchStart={[Function]}
                                       >
-                                        <span
+                                        <div
                                           className="Select-multi-value-wrapper"
                                           id="react-select-24--value"
                                         >
@@ -1338,7 +1340,7 @@ exports[`ProjectAlertRuleDetails Edit alert rule renders 1`] = `
                                               />
                                             </div>
                                           </AutosizeInput>
-                                        </span>
+                                        </div>
                                         <span
                                           className="Select-arrow-zone"
                                           onMouseDown={[Function]}
@@ -1672,7 +1674,7 @@ exports[`ProjectAlertRuleDetails Edit alert rule renders 1`] = `
                                         }
                                       }
                                     >
-                                      <span
+                                      <div
                                         className="Select-multi-value-wrapper"
                                         id="react-select-25--value"
                                       >
@@ -1737,7 +1739,7 @@ exports[`ProjectAlertRuleDetails Edit alert rule renders 1`] = `
                                             />
                                           </div>
                                         </AutosizeInput>
-                                      </span>
+                                      </div>
                                       <span
                                         className="Select-arrow-zone"
                                         onMouseDown={[Function]}
@@ -1877,6 +1879,7 @@ exports[`ProjectAlertRuleDetails Edit alert rule renders 1`] = `
                                 }
                                 clearable={false}
                                 disabled={false}
+                                height={36}
                                 id="id-frequency"
                                 multiple={false}
                                 name="frequency"
@@ -2149,7 +2152,7 @@ exports[`ProjectAlertRuleDetails Edit alert rule renders 1`] = `
                                             onTouchMove={[Function]}
                                             onTouchStart={[Function]}
                                           >
-                                            <span
+                                            <div
                                               className="Select-multi-value-wrapper"
                                               id="react-select-26--value"
                                             >
@@ -2216,7 +2219,7 @@ exports[`ProjectAlertRuleDetails Edit alert rule renders 1`] = `
                                                   />
                                                 </div>
                                               </AutosizeInput>
-                                            </span>
+                                            </div>
                                             <span
                                               className="Select-arrow-zone"
                                               onMouseDown={[Function]}
@@ -2243,6 +2246,7 @@ exports[`ProjectAlertRuleDetails Edit alert rule renders 1`] = `
                         className="css-bcc03y-ActionBar elb7f1e2"
                       >
                         <CancelButton
+                          disabled={false}
                           to="/settings/org-slug/project-slug/alerts/rules/"
                         >
                           <Button
@@ -2693,6 +2697,7 @@ exports[`ProjectAlertRuleDetails New alert rule renders 1`] = `
                                 }
                                 clearable={false}
                                 disabled={false}
+                                height={36}
                                 id="id-actionMatch"
                                 multiple={false}
                                 name="actionMatch"
@@ -2876,7 +2881,7 @@ exports[`ProjectAlertRuleDetails New alert rule renders 1`] = `
                                             onTouchMove={[Function]}
                                             onTouchStart={[Function]}
                                           >
-                                            <span
+                                            <div
                                               className="Select-multi-value-wrapper"
                                               id="react-select-2--value"
                                             >
@@ -2964,7 +2969,7 @@ exports[`ProjectAlertRuleDetails New alert rule renders 1`] = `
                                                   />
                                                 </div>
                                               </AutosizeInput>
-                                            </span>
+                                            </div>
                                             <span
                                               className="Select-arrow-zone"
                                               onMouseDown={[Function]}
@@ -3153,7 +3158,7 @@ exports[`ProjectAlertRuleDetails New alert rule renders 1`] = `
                                         }
                                       }
                                     >
-                                      <span
+                                      <div
                                         className="Select-multi-value-wrapper"
                                         id="react-select-3--value"
                                       >
@@ -3218,7 +3223,7 @@ exports[`ProjectAlertRuleDetails New alert rule renders 1`] = `
                                             />
                                           </div>
                                         </AutosizeInput>
-                                      </span>
+                                      </div>
                                       <span
                                         className="Select-arrow-zone"
                                         onMouseDown={[Function]}
@@ -3307,6 +3312,7 @@ exports[`ProjectAlertRuleDetails New alert rule renders 1`] = `
                             }
                             clearable={false}
                             disabled={false}
+                            height={36}
                             id="id-environment"
                             multiple={false}
                             name="environment"
@@ -3490,7 +3496,7 @@ exports[`ProjectAlertRuleDetails New alert rule renders 1`] = `
                                         onTouchMove={[Function]}
                                         onTouchStart={[Function]}
                                       >
-                                        <span
+                                        <div
                                           className="Select-multi-value-wrapper"
                                           id="react-select-4--value"
                                         >
@@ -3578,7 +3584,7 @@ exports[`ProjectAlertRuleDetails New alert rule renders 1`] = `
                                               />
                                             </div>
                                           </AutosizeInput>
-                                        </span>
+                                        </div>
                                         <span
                                           className="Select-arrow-zone"
                                           onMouseDown={[Function]}
@@ -3765,7 +3771,7 @@ exports[`ProjectAlertRuleDetails New alert rule renders 1`] = `
                                         }
                                       }
                                     >
-                                      <span
+                                      <div
                                         className="Select-multi-value-wrapper"
                                         id="react-select-5--value"
                                       >
@@ -3830,7 +3836,7 @@ exports[`ProjectAlertRuleDetails New alert rule renders 1`] = `
                                             />
                                           </div>
                                         </AutosizeInput>
-                                      </span>
+                                      </div>
                                       <span
                                         className="Select-arrow-zone"
                                         onMouseDown={[Function]}
@@ -3971,6 +3977,7 @@ exports[`ProjectAlertRuleDetails New alert rule renders 1`] = `
                                 }
                                 clearable={false}
                                 disabled={false}
+                                height={36}
                                 id="id-frequency"
                                 multiple={false}
                                 name="frequency"
@@ -4250,7 +4257,7 @@ exports[`ProjectAlertRuleDetails New alert rule renders 1`] = `
                                             onTouchMove={[Function]}
                                             onTouchStart={[Function]}
                                           >
-                                            <span
+                                            <div
                                               className="Select-multi-value-wrapper"
                                               id="react-select-6--value"
                                             >
@@ -4338,7 +4345,7 @@ exports[`ProjectAlertRuleDetails New alert rule renders 1`] = `
                                                   />
                                                 </div>
                                               </AutosizeInput>
-                                            </span>
+                                            </div>
                                             <span
                                               className="Select-arrow-zone"
                                               onMouseDown={[Function]}
@@ -4365,6 +4372,7 @@ exports[`ProjectAlertRuleDetails New alert rule renders 1`] = `
                         className="css-bcc03y-ActionBar elb7f1e2"
                       >
                         <CancelButton
+                          disabled={false}
                           to="/settings/org-slug/project-slug/alerts/rules/"
                         >
                           <Button
