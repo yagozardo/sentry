@@ -186,6 +186,5 @@ window.TestStubs = {
   AllAuthenticators: () => {
     return Object.values(fixtures.Authenticators()).map(x => x());
   },
-
   ...fixtures,
 };
