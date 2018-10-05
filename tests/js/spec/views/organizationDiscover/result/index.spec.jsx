@@ -34,7 +34,7 @@ describe('Result', function() {
 
       it('displays options', function() {
         const buttons = wrapper.find('.btn-group').find('a');
-        expect(buttons).toHaveLength(3);
+        expect(buttons).toHaveLength(5);
       });
 
       it('toggles', function() {

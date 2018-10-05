@@ -309,6 +309,18 @@ export default class OrganizationDiscover extends React.Component {
     );
   }
 
+  updatePage(nextOrPrev) {
+    return this.state.resultManager
+      .fetchPage(nextOrPrev)
+      .then(data => {
+        this.setState({data});
+      })
+      .catch(err => {
+        const message = (err && err.message) || t('An error occurred');
+        addErrorMessage(message);
+      });
+  }
+
   render() {
     const {data, isFetchingQuery, view, resultManager, isEditingSavedQuery} = this.state;
     const {queryBuilder, organization, savedQuery} = this.props;
@@ -373,6 +385,7 @@ export default class OrganizationDiscover extends React.Component {
                 organization={organization}
                 savedQuery={savedQuery}
                 queryBuilder={queryBuilder}
+                updatePage={this.updatePage.bind(this)}
               />
             )}
             {!shouldDisplayResult && <Intro updateQuery={this.updateFields} />}

@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 import re
 import six
+from functools32 import partial
 from copy import deepcopy
 
 from django.utils import timezone
@@ -16,6 +17,7 @@ from sentry.utils.dates import (
 from sentry.api.serializers.rest_framework import ListField
 from sentry.api.bases.organization import OrganizationPermission
 from sentry.api.bases import OrganizationEndpoint
+from sentry.api.paginator import GenericOffsetPaginator
 from sentry.models import Project, ProjectStatus, OrganizationMember, OrganizationMemberTeam
 from sentry.utils import snuba
 from sentry import roles
@@ -170,7 +172,7 @@ class DiscoverQuerySerializer(serializers.Serializer):
 class OrganizationDiscoverQueryEndpoint(OrganizationEndpoint):
     permission_classes = (OrganizationDiscoverQueryPermission, )
 
-    def do_query(self, projects, **kwargs):
+    def do_query(self, projects, start, end, request, **kwargs):
         requested_query = deepcopy(kwargs)
 
         selected_columns = kwargs['selected_columns']
@@ -190,41 +192,51 @@ class OrganizationDiscoverQueryEndpoint(OrganizationEndpoint):
             if aggregation[1] == 'project_name':
                 aggregation[1] = 'project_id'
 
-        snuba_results = snuba.raw_query(
+        data_fn = partial(
+            snuba.raw_query,
+            start=start,
+            end=end,
             referrer='discover',
             **kwargs
         )
 
-        if 'project_name' in requested_query['selected_columns']:
-            project_name_index = requested_query['selected_columns'].index('project_name')
-            snuba_results['meta'].insert(project_name_index, {'name': 'project_name'})
-            if 'project_id' not in requested_query['selected_columns']:
-                snuba_results['meta'] = [
-                    field for field in snuba_results['meta'] if field['name'] != 'project_id'
-                ]
-
-            for result in snuba_results['data']:
-                result['project_name'] = projects[result['project_id']]
+        def handle_results(snuba_results):
+            if 'project_name' in requested_query['selected_columns']:
+                project_name_index = requested_query['selected_columns'].index('project_name')
+                snuba_results['meta'].insert(project_name_index, {'name': 'project_name'})
                 if 'project_id' not in requested_query['selected_columns']:
-                    del result['project_id']
+                    snuba_results['meta'] = [
+                        field for field in snuba_results['meta'] if field['name'] != 'project_id'
+                    ]
 
-        if 'project_name' in requested_query['groupby']:
-            project_name_index = requested_query['groupby'].index('project_name')
-            snuba_results['meta'].insert(project_name_index, {'name': 'project_name'})
-            if 'project_id' not in requested_query['groupby']:
-                snuba_results['meta'] = [
-                    field for field in snuba_results['meta'] if field['name'] != 'project_id'
-                ]
+                for result in snuba_results['data']:
+                    result['project_name'] = projects[result['project_id']]
+                    if 'project_id' not in requested_query['selected_columns']:
+                        del result['project_id']
 
-            for result in snuba_results['data']:
-                result['project_name'] = projects[result['project_id']]
+            if 'project_name' in requested_query['groupby']:
+                project_name_index = requested_query['groupby'].index('project_name')
+                snuba_results['meta'].insert(project_name_index, {'name': 'project_name'})
                 if 'project_id' not in requested_query['groupby']:
-                    del result['project_id']
+                    snuba_results['meta'] = [
+                        field for field in snuba_results['meta'] if field['name'] != 'project_id'
+                    ]
 
-        # Only return the meta propety "name"
-        snuba_results['meta'] = [{'name': field['name']} for field in snuba_results['meta']]
+                for result in snuba_results['data']:
+                    result['project_name'] = projects[result['project_id']]
+                    if 'project_id' not in requested_query['groupby']:
+                        del result['project_id']
 
-        return snuba_results
+            # Only return the meta property "name"
+            snuba_results['meta'] = [{'name': field['name']} for field in snuba_results['meta']]
+            return snuba_results
+
+        # return snuba_results
+        return self.paginate(
+            request=request,
+            on_results=handle_results,
+            paginator=GenericOffsetPaginator(data_fn=data_fn)
+        )
 
     def post(self, request, organization):
 
@@ -262,7 +274,7 @@ class OrganizationDiscoverQueryEndpoint(OrganizationEndpoint):
                 if field not in groupby:
                     groupby.append(field)
 
-        results = self.do_query(
+        return self.do_query(
             projects=projects_map,
             start=serialized.get('start'),
             end=serialized.get('end'),
@@ -275,6 +287,5 @@ class OrganizationDiscoverQueryEndpoint(OrganizationEndpoint):
             rollup=serialized.get('rollup'),
             filter_keys={'project_id': serialized.get('projects')},
             arrayjoin=serialized.get('arrayjoin'),
+            request=request,
         )
-
-        return Response(results, status=200)

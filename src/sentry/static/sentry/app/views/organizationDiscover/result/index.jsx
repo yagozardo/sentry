@@ -32,6 +32,7 @@ export default class Result extends React.Component {
     data: PropTypes.object.isRequired,
     queryBuilder: PropTypes.object.isRequired,
     savedQuery: SentryTypes.DiscoverSavedQuery, // Provided if it's a saved search
+    updatePage: PropTypes.func,
   };
 
   constructor() {
@@ -205,8 +206,17 @@ export default class Result extends React.Component {
     );
   }
 
+  getNextPage() {
+    this.props.updatePage('next');
+  }
+
+  getPreviousPage() {
+    this.props.updatePage('prev');
+  }
+
   render() {
     const {data: {baseQuery, byDayQuery}, savedQuery} = this.props;
+
     const {view} = this.state;
 
     const basicChartData = getChartData(baseQuery.data.data, baseQuery.query);
@@ -280,6 +290,26 @@ export default class Result extends React.Component {
             {this.renderNote()}
           </ChartWrapper>
         )}
+        <div className="stream-pagination clearfix">
+          <div className="btn-group pull-right">
+            <a
+              className="btn btn-default btn-sm prev"
+              onClick={() => {
+                this.getPreviousPage();
+              }}
+            >
+              <span title={t('Previous')} className="icon-arrow-left" />
+            </a>
+            <a
+              className="btn btn-default btn-sm next"
+              onClick={() => {
+                this.getNextPage();
+              }}
+            >
+              <span title={t('Next')} className="icon-arrow-right" />
+            </a>
+          </div>
+        </div>
         {this.renderSummary()}
       </Box>
     );
