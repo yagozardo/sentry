@@ -34,12 +34,20 @@ class EventDetailsEndpoint(Endpoint):
         Retrieve an Event
         `````````````````
 
-        This endpoint returns the data for a specific event.  The event ID
-        is the event as it appears in the Sentry database and not the event
-        ID that is reported by the client upon submission.
+        This endpoint returns the data for a specific event.
+
+        :pparam string event_id: either the numeric database primary key for the
+                                 event or the 32-character hexadecimal event_id.
         """
         try:
-            event = Event.objects.get(id=event_id)
+            event = None
+            if event_id.isdigit():
+                try:
+                    event = Event.objects.get(id=event_id)
+                except Event.DoesNotExist:
+                    pass
+            if event is None:
+                event = Event.objects.get(event_id=event_id)
         except Event.DoesNotExist:
             raise ResourceDoesNotExist
 
