@@ -188,7 +188,8 @@ class OrganizationDiscoverQueryEndpoint(OrganizationEndpoint):
         return self.paginate(
             request=request,
             on_results=lambda results:results,
-            paginator=SnubaOffsetPaginator(data_fn=data_fn)
+            paginator=SnubaOffsetPaginator(data_fn=data_fn),
+            # default_per_page=limit  -- to add limit to per page
         )
 
     def post(self, request, organization):
