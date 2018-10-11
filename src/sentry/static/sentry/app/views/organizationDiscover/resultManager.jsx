@@ -27,7 +27,7 @@ export default function createResultManager(queryBuilder) {
   }
 
   /**
-   * Fetches data for all relevant visuzlizations.
+   * Fetches data for all relevant visualizations.
    * Always fetches base query data, and fetches by-day data only if the
    * current query contains an aggregation.
    *
@@ -50,6 +50,9 @@ export default function createResultManager(queryBuilder) {
     return Promise.all(promises).then(resp => {
       data.baseQuery.query = query;
       data.baseQuery.data = resp[0];
+      if (resp[0].pageLinks) {
+        data.pageLinks = resp[0].pageLinks;
+      }
 
       if (hasAggregations) {
         data.byDayQuery.query = byDayQuery;
@@ -72,7 +75,7 @@ export default function createResultManager(queryBuilder) {
   }
 
   /**
-   * Returns a boolean indicating whether the result whould be displayed.
+   * Returns a boolean indicating whether the result should be displayed.
    * If there is base data available this is true.
    *
    * @returns {Boolean}

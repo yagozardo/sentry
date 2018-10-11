@@ -7,6 +7,7 @@ import {t} from 'app/locale';
 import Link from 'app/components/link';
 import BarChart from 'app/components/charts/barChart';
 import LineChart from 'app/components/charts/lineChart';
+import Pagination from 'app/components/pagination';
 import space from 'app/styles/space';
 
 import {getChartData, getChartDataByDay, downloadAsCsv} from './utils';
@@ -111,7 +112,7 @@ export default class Result extends React.Component {
   }
 
   render() {
-    const {baseQuery, byDayQuery} = this.props.data;
+    const {baseQuery, byDayQuery, pageLinks} = this.props.data;
     const {view} = this.state;
 
     const basicChartData = getChartData(baseQuery.data.data, baseQuery.query);
@@ -185,6 +186,7 @@ export default class Result extends React.Component {
             {this.renderNote()}
           </ChartWrapper>
         )}
+        <Pagination pageLinks={pageLinks}/>
         {this.renderSummary()}
       </Box>
     );
