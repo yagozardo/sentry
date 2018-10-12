@@ -1,16 +1,19 @@
 from __future__ import absolute_import
 
 import responses
+import pytest
 
 from exam import fixture
 
 from django.core.urlresolvers import reverse
 
+from sentry.integrations.exceptions import IntegrationError
+from sentry.integrations.gitlab.repository import GitlabRepositoryProvider
 from sentry.models import Identity, IdentityProvider, Integration, Repository
 from sentry.testutils import PluginTestCase
 from sentry.utils import json
 
-from sentry.integrations.gitlab.repository import GitlabRepositoryProvider
+from .testutils import COMPARE_RESPONSE, COMMIT_LIST_RESPONSE
 
 
 class GitLabRepositoryProviderTest(PluginTestCase):
@@ -51,7 +54,7 @@ class GitLabRepositoryProviderTest(PluginTestCase):
             'path_with_namespace': 'getsentry/example-repo',
             'name_with_namespace': 'Get Sentry / Example Repo',
             'path': 'example-repo',
-            'id': 123,
+            'id': '123',
             'web_url': 'https://example.gitlab.com/getsentry/projects/example-repo',
         }
         self.gitlab_id = 123
@@ -203,3 +206,73 @@ class GitLabRepositoryProviderTest(PluginTestCase):
         repo = Repository.objects.get(pk=response.data['id'])
         self.provider.on_delete_repository(repo)
         assert len(responses.calls) == 1
+
+    @responses.activate
+    def test_compare_commits_start_and_end(self):
+        responses.add(
+            responses.GET,
+            'https://example.gitlab.com/api/v4/projects/%s/repository/compare?from=abc&to=xyz' % self.gitlab_id,
+            json=json.loads(COMPARE_RESPONSE)
+        )
+        response = self.create_repository(self.default_repository_config,
+                                          self.integration.id)
+        repo = Repository.objects.get(pk=response.data['id'])
+        commits = self.provider.compare_commits(repo, 'abc', 'xyz')
+        assert 2 == len(commits)
+        for commit in commits:
+            assert_commit_shape(commit)
+
+    @responses.activate
+    def test_compare_commits_start_and_end_gitlab_failure(self):
+        responses.add(
+            responses.GET,
+            'https://example.gitlab.com/api/v4/projects/%s/repository/compare?from=abc&to=xyz' % self.gitlab_id,
+            status=502
+        )
+        response = self.create_repository(self.default_repository_config,
+                                          self.integration.id)
+        repo = Repository.objects.get(pk=response.data['id'])
+        with pytest.raises(IntegrationError):
+            self.provider.compare_commits(repo, 'abc', 'xyz')
+
+    @responses.activate
+    def test_compare_commits_no_start(self):
+        responses.add(
+            responses.GET,
+            'https://example.gitlab.com/api/v4/projects/%s/repository/commits/xyz' % self.gitlab_id,
+            json={'created_at': '2018-09-19T13:14:15Z'}
+        )
+        responses.add(
+            responses.GET,
+            'https://example.gitlab.com/api/v4/projects/%s/repository/commits?until=2018-09-19T13:14:15Z' % self.gitlab_id,
+            json=json.loads(COMMIT_LIST_RESPONSE)
+        )
+
+        response = self.create_repository(self.default_repository_config,
+                                          self.integration.id)
+        repo = Repository.objects.get(pk=response.data['id'])
+        commits = self.provider.compare_commits(repo, None, 'xyz')
+        for commit in commits:
+            assert_commit_shape(commit)
+
+    @responses.activate
+    def test_compare_commits_no_start_gitlab_failure(self):
+        responses.add(
+            responses.GET,
+            'https://example.gitlab.com/api/v4/projects/%s/repository/commits/abc' % self.gitlab_id,
+            status=502
+        )
+        response = self.create_repository(self.default_repository_config,
+                                          self.integration.id)
+        repo = Repository.objects.get(pk=response.data['id'])
+        with pytest.raises(IntegrationError):
+            self.provider.compare_commits(repo, None, 'abc')
+
+
+def assert_commit_shape(commit):
+    assert commit['id']
+    assert commit['repository']
+    assert commit['author_email']
+    assert commit['author_name']
+    assert commit['message']
+    assert commit['timestamp']
