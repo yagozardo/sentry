@@ -40,9 +40,7 @@ const organizationNavigation = [
         path: `${pathPrefix}/auth/`,
         title: t('Auth'),
         show: ({organization, access, features}) =>
-          (features.has('sso') ||
-            (organization.experiments &&
-              organization.experiments.SSOPaywallExperiment === 1)) &&
+          features.has('sso') &&
           access.has('org:admin'),
         description: t('Configure single sign-on'),
       },
