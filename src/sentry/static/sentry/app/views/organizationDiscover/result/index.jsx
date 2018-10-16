@@ -211,7 +211,7 @@ export default class Result extends React.Component {
   }
 
   getPreviousPage() {
-    this.props.updatePage('prev');
+    this.props.updatePage('previous');
   }
 
   render() {
